@@ -1,0 +1,19 @@
+<% if notice.present? %>
+  <p id="notice">
+    <%= notice %>
+  </p>
+<% end %>
+
+<h1>Task Manager</h1>
+
+<div>
+  <%= render "form", task: @task %>
+</div>
+
+<div id="tasks">
+  <h1>Tasks</h1>
+
+  <div data-controller="tasks">
+    <%= render @tasks %>
+  </div>
+</div>

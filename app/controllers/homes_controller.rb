@@ -9,6 +9,6 @@ class HomesController < ApplicationController
 	end
 	def list
 	end
-	def menu
+	def stimulas
 	end
 end

@@ -270,6 +270,79 @@ Attachments
 #### Impact
 
 </details>
+<details>
+<summary>How to Work with <b>Stimulas</b></summary>
+
+#### Description
+- It is designed to enhance the static or server-rendered HTML by connecting Javascript objects to element on the pageusing simple annotation.
+
+#### Steps To Reproduce
+
+1. One need to set the data-controller name to the parent div in which he/she is applying the stimulas
+```
+one can use 
+
+./bin/rails generate stimulus [controller]
+
+```
+
+2. Since in our Case We are able to persist the data you can see
+on the page reload SO i am using the <b>fetch</b> which is use to send an POST call to an api-endpoint when ever the checkbox is checked it inside the stimulas controller.
+```
+
+    toggle(e) {
+        const id = e.target.dataset.id
+        const csrfToken = document.querySelector("[name='csrf-token']").content
+
+        fetch(`/tasks/${id}/toggle`, {
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            mode: 'cors', // no-cors, *cors, same-origin
+            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: 'same-origin', // include, *same-origin, omit
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': csrfToken
+            },
+            body: JSON.stringify({ completed: e.target.checked }) // body data type must match "Content-Type" header
+        })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message)
+            })
+    }
+}
+
+```
+3. That's why it's not Going Away on Refresh.
+
+#### Proof of Concept
+JS concept Uses:
+1. fetch
+2. document.querySelector
+
+Attachments
+1. <img src="doc/Gifs/stimulas.gif" alt = "Example_Gif"/>
+</details>
+
+#### Project Requirements->
+  
+        * Ruby version => 2.7.5
+
+        * Rails version => 7.0.4
+
+##### Project Setup->
+
+       * git clone https://github.com/saditya370/Media-Explorer.git
+      
+       * Check ruby -v 
+      
+       * If you don't have required version run   "rbenv install 3.1.2"
+      
+       * Run "bundle install"
+      
+       * Run "rails db:migrate"
+      
+       * Start the server by running bin/dev
 
 ##### Verified By
 

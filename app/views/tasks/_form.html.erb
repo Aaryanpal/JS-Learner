@@ -1,0 +1,6 @@
+<%= form_with(model: task) do |form| %>
+    <div>
+      <%= form.text_field :description, placeholder: "Add new task"%>
+      <%= form.submit "Save" %>
+    </div>
+  <% end %>

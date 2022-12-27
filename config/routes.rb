@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :tasks
+  post "tasks/:id/toggle", to: "tasks#toggle"
+  get "homes/stimulas"
   get "homes/modal"
   get "homes/faq"
   get "homes/tab"
